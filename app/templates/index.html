@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PyScript & Django</title>
+
+  <!-- PyScript -->
+  <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+  <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <py-env>
+    - numpy
+    - matplotlib
+  </py-env>
+</head>
+
+<body>
+  <div class="col-8 m-auto pt-4 pb-4 text-center">
+    <h1>Rendering matplotlib plots using PyScript and Django</h1>
+
+    <div class="container">
+
+      <div class="row">
+        <div id="plot1" class="col">
+        </div>
+
+        <div id="plot2" class="col">
+        </div>
+      </div>
+
+      <div class="row">
+        <div id="plot3" class="col">
+        </div>
+
+        <div id="plot4" class="col">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <py-script>
+import matplotlib.pyplot as plt
+import numpy as np
+from random import random
+
+##########
+
+# Plot 1
+f1 = plt.figure(1)
+data = np.random.standard_normal(10000)
+plt.hist(data, bins=40, density=True)
+plt.title('Histogram plot of Standard Normal Distribution')
+pyscript.write('plot1', f1)
+
+##########
+
+# Plot 2
+f2 = plt.figure(2)
+x = sorted([random() for x in range(20)])
+y = sorted([random() for x in range(20)])
+plt.plot(x, y)
+plt.title('Linear plot of random X and Y values')
+pyscript.write('plot2', f2)
+
+##########
+
+# Plot 3
+f3 = plt.figure(3)
+x = np.random.randn(1000)
+y = np.random.randn(1000)
+plt.scatter(x, y, alpha=0.4)
+plt.title('Scatter plot of random values')
+pyscript.write('plot3', f3)
+
+##########
+
+# Plot 4
+f4 = plt.figure(4)
+plt.bar(np.arange(25), np.random.randint(0, 50, 25))
+plt.title('Bar plot of random values')
+pyscript.write('plot4', f4)
+  </py-script>
+</body>
+
+</html>
