@@ -6,23 +6,23 @@ The project aims to show how to render a Matplotlib plot using PyScript and Djan
 
 ## How to run
 
-Clone this repository
+- Clone this repository
 
 `git clone https://github.com/vhsenna/pyscript-django.git`
 
-Create virtualenv
+- Create virtualenv
 
 `python -m venv venv`
 
-Activate virtualenv
+- Activate virtualenv
 
 `source venv/bin/activate`
 
-Install packages
+- Install packages
 
 `pip install -r requirements.txt`
 
-Run server
+- Run server
 
 `python manage.py runserver`
 
